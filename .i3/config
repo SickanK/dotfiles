@@ -1,6 +1,6 @@
 ###########################################################################
 ############		        i3 CONFIG FILE	                ###############
-###########################################################################
+##########################################################################
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 ################       Start of all the settings          #################
 
@@ -52,7 +52,7 @@ set $color16 #404040
 
 # set $borderInactive #928374
 set $borderInactive #403a37
-set $borderActive   #504945
+set $borderActive   #83a598
 
 # Window Colors
 #			Border		  Background          Text              Indicator
@@ -112,25 +112,18 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 # you can find the class with the program xprop
 
 # assign [class=""]                                                   → 1
-assign [class="firefox"]                          → 2
+#assign [class="firefox"]                          → 2
 # assign [class=""]                                                   → 3
 # assign [class=""]                                                   → 4
 # assign [class=""]                                                   → 5
 # assign [class="Thunar|thunar"]                                        → 6
 # assign [class=""]                                                   → 7
-assign [class="Vmware|vmware"]                                        → 8
+#assign [class="Vmware|vmware"]                                        → 8
 assign [class="Discord|discord"]                                      → 9
-assign [class="Spotify|spotify"]                                      → 10
+#assign [class="Spotify|spotify"]                                      → 10
 #fix for spotify not moving to workspace 10
-for_window [class="Spotify"] move to workspace 10
+#for_window [class="Spotify"] move to workspace 10
 
-# enable floating on all windows
-# for_window [class="[.]*"] floating enable
-
-for_window [class="SimpleScreenRecorder" instance="simplescreenrecorder" title="SimpleScreenRecorder"] floating enable
-for_window [class="Gnome-calculator" instance="gnome-calculator" title="Calculator" window_role="gnome-calcul46137358 ator"] floating enable move position center
-for_window [class="Nwggrid" instance="nwggrid" title="~nwggrid" window_role="~nwggrid"] fullscreen enable
-for_window [class="Connect4" instance="sfml_project" title="Connect4"] floating enable move position center
 #}}}
 
 ################### GAPS ######################## {{{
@@ -149,7 +142,7 @@ new_window 1pixel
  gaps inner 0
  gaps outer 0
 # smart_gaps on
-smart_borders on
+#smart_borders on
 
 # i3-gaps-rounded
 # border_radius 10
@@ -302,6 +295,7 @@ bindsym $mod+Shift+i exec $HOME/.bin/i3/i3-layout-manager/layout_manager.sh
 
 # bindsym $mod+Return exec alacritty
 bindsym $mod+Return exec alacritty
+bindsym $mod+f exec firefox
 
 #}}}
 
@@ -352,7 +346,7 @@ bindsym $mod+d exec "rofi -modi run,drun,window -show drun"
   bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
-  bindsym $mod+f fullscreen toggle
+  bindsym $mod+Shift+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
   bindsym $mod+s layout stacking
@@ -416,7 +410,7 @@ exec_always --no-startup-id feh --randomize --bg-center $HOME/backgrounds/*
 
 ################### POLYBAR ##################### {{{
 
-exec_always --no-startup-id $HOME/.config/polybar/launch_polybar.sh
+exec_always --no-startup-id sh $HOME/.config/polybar/launch_polybar.sh
 
 # bar toggle, hide or show 
 #bindsym $mod+h exec $HOME/.bin/bar mode toggle
@@ -426,7 +420,6 @@ exec_always --no-startup-id $HOME/.config/polybar/launch_polybar.sh
 ################### EXECUTE ##################### {{{
 
 exec_always --no-startup-id $HOME/.bin/ext_monitor
-
 
 
 # exec_always compton --config $HOME/.config/compton/compton.conf --respect-prop-shadow

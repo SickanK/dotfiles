@@ -87,7 +87,7 @@ ws-icon-default = 
 
 ; Focused label
 label-focused            = %icon% %name%
-label-focused-background = ${colors.green}
+label-focused-background = ${colors.orange}
 label-focused-foreground = ${colors.foreground}
 label-focused-padding    = 2
 
@@ -98,7 +98,7 @@ label-unfocused-padding    = 2
 
 ; Visible labels
 label-visible            = %icon% %name%
-label-visible-foreground = ${colors.foreground}
+label-visible-foreground = ${colors.orange}
 label-visible-padding    = 2
 
 ; Urgent labels

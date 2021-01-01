@@ -10,6 +10,7 @@
       glob: true
       path: scripts/*
     ~/.tmux.conf: .tmux.conf
+    ~/.bashrc: .bashrc
     ~/.i3/config: 
       create: true
       path: .i3/config
