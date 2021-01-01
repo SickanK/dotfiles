@@ -5,22 +5,28 @@
 - clean: ['~']
 
 - link:
-    ~/.tmux.conf: tmux.conf
-    ~/.i3/config: config
-    ~/.config/polybar: 
-      recursive: true
-    ~/.config/alacritty/alacritty.yml: alacritty.yml
-    ~/.config/rofi/config.rasi: config.rasi
-    ~/.config/nvim: 
-      recursive: true
-
-
-- create:
-    - ~/.config
-    - ~/.config/polybar
-    - ~/.config/rofi
-    - ~/.config/alacritty
-    - ~/.config/nvim
+    ~/scripts/: 
+      create: true
+      glob: true
+      path: scripts/*
+    ~/.tmux.conf: .tmux.conf
+    ~/.i3/config: 
+      create: true
+      path: .i3/config
+    ~/.config/polybar/: 
+      create: true
+      glob: true
+      path: .config/polybar/*
+    ~/.config/alacritty/alacritty.yml: 
+      create: true
+      path: .config/alacritty/alacritty.yml
+    ~/.config/rofi/config.rasi: 
+      create: true
+      path: .config/rofi/config.rasi
+    ~/.config/nvim/: 
+      create: true
+      glob: true
+      path: .config/nvim/*
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]

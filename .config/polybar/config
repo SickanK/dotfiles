@@ -56,7 +56,7 @@ font-2 = "Regular Siji:size=10;2"
 ; Modlues
 modules-left   = i3
 modules-center = time date
-modules-right  = temperature pulseaudio lock logout poweroff
+modules-right  = updates-pacman-aurhelper pulseaudio lock logout poweroff
 
 ; Cursor actions
 cursor-click  = pointer
@@ -134,20 +134,16 @@ label            =  %date%
 label-foreground = ${colors.foreground}
 label-padding    = 1
 
-[module/temperature]
-type = internal/temperature
+[module/updates-pacman-aurhelper]
+type = custom/script
+exec = ~/scripts/polybar-updates-pacman-aurhelper.sh
+interval = 600
+label-padding    = 1
 
-; Label
-label            =  %temperature-c%
+; Refresh icon: 
+label            =  %output%  
 label-background = ${colors.orange}
 label-foreground = ${colors.foreground}
-label-padding    = 2
-
-; Warning label
-label-warn            =  %temperature%
-label-warn-background = ${colors.red}
-label-warn-foreground = ${colors.foreground}
-label-warn-padding    = 2
 
 [module/pulseaudio]
 type = internal/pulseaudio
