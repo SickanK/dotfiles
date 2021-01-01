@@ -1,0 +1,456 @@
+# You can edit this file by hand, but it's recommended not to do that.
+
+# Marks:
+'H
+	/home/dev/
+	..
+1577895976
+'b
+	/home/dev/bin/
+	..
+1577895976
+'h
+	/home/dev/
+	..
+1578239205
+
+# Bookmarks:
+
+# TUI:
+ar
+q0
+v2
+ov
+m-1
+l2
+r-6,2
+
+# Left window history (oldest to newest):
+d/etc/avahi
+	..
+0
+d/etc
+	..
+0
+d/
+	lib64
+6
+d/lib64
+	..
+0
+d/
+	var
+18
+d/var
+	lock
+7
+d/var/lock
+	..
+0
+d/var
+	..
+0
+d/
+	bin
+0
+d/bin
+	..
+0
+d/
+	lib64
+6
+d/lib64
+	..
+0
+d/
+	lib64
+6
+d/lib64
+	..
+0
+d/
+	lib64
+6
+d/lib64
+	..
+0
+d/
+	home
+4
+d/home
+	dev
+1
+d/home/dev
+	Downloads
+2
+d/home/dev/Downloads
+	..
+0
+d/home/dev
+	..
+0
+d/home
+	dev
+1
+d/home/dev
+	Downloads
+2
+d/home/dev/Downloads
+	..
+0
+d/home/dev
+	Downloads
+2
+d/home/dev/Downloads
+	..
+0
+d/home/dev
+	backgrounds
+3
+d/home/dev/backgrounds
+	..
+0
+d/home/dev
+	backgrounds
+3
+d/home/dev/backgrounds
+	..
+0
+d/home/dev
+	backgrounds
+3
+d/home/dev/backgrounds
+	background_wolf.jpg
+1
+d/home/dev
+	vim_strace
+7
+d/home
+	dev
+1
+d/
+	run
+12
+d/run
+	..
+0
+d/
+	home
+4
+d/home
+	dev
+1
+d/home/dev
+	backgrounds
+3
+d/home/dev/backgrounds
+	..
+0
+d/home/dev
+	..
+0
+d/home
+	dev
+1
+d/
+	home
+4
+d/home
+	dev
+1
+d/home/dev
+	..
+0
+d/home
+	dev
+1
+d/
+	home
+4
+d/home
+	dev
+1
+d/home/dev
+	AUR
+7
+d/home
+	dev
+1
+d/
+	lib64
+6
+d/lib64
+	..
+0
+d/
+	lib64
+6
+d/lib64
+	..
+0
+d/
+	lib64
+6
+d/lib64
+	dbus-1.0
+18
+d/home/dev
+	backgrounds
+9
+d/home/dev/backgrounds
+	..
+0
+d/home/dev
+	.config
+3
+d/home/dev/.config
+	vifm
+12
+d/home/dev/.config/vifm
+	scripts
+2
+d/home/dev/.config/vifm/scripts
+	..
+0
+d/home/dev/.config/vifm
+	scripts
+2
+d/home/dev/.config/vifm/scripts
+	..
+0
+d/home/dev/.config/vifm
+	scripts
+2
+d/home/dev/.config/vifm/scripts
+	vifmrun
+2
+d/home/dev/.config/vifm
+	scripts
+2
+d/home/dev/.config/vifm/scripts
+	..
+0
+d/home/dev/.config/vifm
+	..
+0
+d/home/dev/.config
+	..
+0
+d/home/dev
+	backgrounds
+9
+d/home/dev/backgrounds
+	..
+0
+d/home/dev
+	AUR
+7
+d/home/dev/AUR
+	ncspot
+1
+d/home/dev/AUR/ncspot
+	..
+0
+d/home/dev/AUR
+	..
+0
+d/home/dev
+	.config
+3
+d/home/dev/.config
+	..
+0
+d/home/dev
+	dotfiles
+10
+d/home
+	..
+0
+d/
+	home
+4
+d/home
+	dev
+1
+d/home/dev
+	dotfiles
+10
+d/home/dev/dotfiles
+	info
+4
+d/home/dev/dotfiles/info
+	exclude
+1
+d/home/dev/dotfiles
+	info
+4
+d/home/dev
+	Downloads
+10
+d/tmp/mozilla_dev0
+	..
+0
+d/tmp
+	..
+0
+d/
+	tmp
+16
+d/tmp
+	mozilla_dev0
+8
+d/tmp/mozilla_dev0
+	org.gimp.GIMP.flatpakref
+1
+d/tmp
+	mozilla_dev0
+8
+d/
+	tmp
+16
+d/tmp
+	mozilla_dev0
+8
+d/tmp/mozilla_dev0
+	..
+0
+d/tmp
+	mozilla_dev0
+8
+d/tmp/mozilla_dev0
+	..
+0
+d/tmp
+	mozilla_dev0
+9
+d/tmp/mozilla_dev0
+	..
+0
+d
+
+# Right window history (oldest to newest):
+D/home/dev/.config
+	castero
+1
+D/home/dev
+	..
+0
+D/home
+	..
+0
+D/
+	home
+4
+D/home
+	..
+0
+D/
+	home
+4
+D/home
+	..
+0
+D/
+	home
+4
+D/home
+	..
+0
+D/
+	etc
+3
+D/etc
+	..
+0
+D/
+	etc
+3
+D/etc
+	X11
+2
+D/etc/X11
+	xorg.conf.d
+2
+D/etc/X11/xorg.conf.d
+	..
+0
+D/etc/X11
+	..
+0
+D/etc
+	depmod.d
+14
+D/etc/depmod.d
+	..
+0
+D/etc
+	..
+0
+D/
+	dev
+2
+D/dev
+	..
+0
+D/
+	home
+4
+D/home
+	dev
+1
+D/home/dev
+	gimp
+13
+D/home/dev/gimp
+	org.gimp.GIMP.flatpakref
+1
+D
+
+# Command line history (oldest to newest):
+:wq
+:Q
+:w
+:Show hidden files
+:zo Show hidden files
+:zo: Show hidden files
+:home
+:~
+:cd ~
+:vim vifmrun.sh
+:touch vifmrun
+:mv vifmrun vifmrun.sh
+:rm vifmrun
+:touch vifmrun.sh
+:touch vifmimg.sh
+:move
+:copy
+:mkdir
+:mkdir gimp
+:q
+
+# Search history (oldest to newest):
+
+# Prompt history (oldest to newest):
+
+# Local filter history (oldest to newest):
+
+# Registers:
+
+# Directory stack (oldest to newest):
+
+# Trash content:
+t/home/dev/.local/share/vifm/Trash/000_vifmrun
+	/home/dev/.config/vifm/scripts/vifmrun
+t/home/dev/.local/share/vifm/Trash/000_castero.conf
+	/home/dev/.config/castero/castero.conf
+
+# State:
+f
+i1
+[.0
+[F
+F
+I1
+].0
+]F
+s0
