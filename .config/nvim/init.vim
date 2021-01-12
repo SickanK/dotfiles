@@ -12,6 +12,11 @@
     call plug#begin()
   endif
 
+"auto close 
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+
 call plug#begin('~/.config/nvim/plugged')    
 
 " Buffer
@@ -21,6 +26,8 @@ nnoremap <a-Tab> gt
 "set nohlsearch
 set nocompatible              " be iMproved, required
 filetype on                  " required
+filetype plugin on                  " required
+syntax on
 
 " Leader
 let mapleader      = ' '
@@ -200,6 +207,13 @@ Plug 'itchyny/lightline.vim' " Better info bar
 Plug 'dense-analysis/ale' " Linting and so much more
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'mattn/emmet-vim'
+Plug 'rust-lang/rust.vim'
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'branch': 'release/0.x'
+  \ }
 
 " Nerdtree
 Plug 'preservim/nerdtree'
@@ -207,20 +221,14 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'junegunn/fzf'
 
+" Other
+Plug 'vimwiki/vimwiki'
+
 call plug#end()
 
-" Vim rainbow
-let g:rainbow_active = 1
+" jsx/tsx
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
 
-let g:rainbow_load_separately = [
-    \ [ '*' , [['(', ')'], ['\[', '\]'], ['{', '}']] ],
-    \ [ '*.tex' , [['(', ')'], ['\[', '\]']] ],
-    \ [ '*.cpp' , [['(', ')'], ['\[', '\]'], ['{', '}']] ],
-    \ [ '*.{html,htm}' , [['(', ')'], ['\[', '\]'], ['{', '}'], ['<\a[^>]*>', '</[^>]*>']] ],
-    \ ]
-
-let g:rainbow_guifgs = ['RoyalBlue3', 'DarkOrange3', 'DarkOrchid3', 'FireBrick']
-let g:rainbow_ctermfgs = ['blue', 'green', 'yellow', 'red', 'magenta']
 " FZF 
 
 let g:fzf_colors =
@@ -238,31 +246,22 @@ let g:fzf_colors =
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
 
+" Vim wiki
+let g:vimwiki_list = [{'path': '~/vimwiki/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
+
 "Emmet
-let g:user_emmet_leader_key='<a-TAB>'
+let g:user_emmet_leader_key='a-TAB'
+let g:user_emmet_mode='a' 
+let g:user_emmet_install_global = 0
+autocmd FileType html,css,tsx,jsx EmmetInstall
 
-"Format shortcut sing prettier 
-nnoremap <a-f> :Format<CR>
-autocmd BufWritePre *.js :Format 
+"Prettier 
+let g:prettier#config#use_tabs = 'false'
+let g:prettier#config#tab_width = '2'
+let g:prettier#config#parser = ""
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
 
-" Goyo
-
-function! ProseMode(theme)
-"     if executable('tmux') && strlen($TMUX)
-"        silent !tmux set status off
-"        silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
-"    endif
-    if a:theme == "light"
-        colorscheme base16-google-light
-    elseif a:theme == "dark"
-        colorscheme base16-google-dark
-    endif
-    call goyo#execute(0, [])
-    set spell noci nosi noai nolist noshowmode noshowcmd
-    set complete+=s
-    set scrolloff=999
-    set bg=light
-endfunction
 
 function! EndProseMode()
 "    if executable('tmux') && strlen($TMUX)
@@ -287,10 +286,12 @@ nmap \ep :EndProseMode <CR>
       \   'python': ['flake11', 'pylint'],
       \   'ruby': ['standardrb', 'rubocop'],
       \   'javascript': ['eslint'],
+      \   'typescript': ['eslint'],
       \}
 
  let g:ale_fixers = {
 \   'javascript': ['prettier'],
+\   'typescript': ['prettier'],
 \   'css': ['prettier'],
 \}
 
@@ -349,10 +350,6 @@ function! s:MaybeUpdateLightline()
     call lightline#update()
   end
 endfunction
-" Syntax higlight
-filetype plugin on
-syntax on
-syntax enable
 
 
  " Fx code :))
@@ -555,3 +552,5 @@ nnoremap <silent> <space>J  :<C-u>CocNext<CR>
 nnoremap <silent> <space>K  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent> <space>P  :<C-u>CocListResume<CR>
+
+

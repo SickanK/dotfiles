@@ -30,3 +30,11 @@ eval "$(starship init bash)"
 
 # Start spotifyd
 alias spt='sh ~/scripts/launchspt.sh'
+
+# Tmux shared
+alias tmuxs='tmux new-session -s main'
+alias tmuxa='tmux attach-session -t main'
+
+export BROWSER="/usr/bin/firefox"
+export PATH="$PATH:/home/dev/.cargo/bin"
+
