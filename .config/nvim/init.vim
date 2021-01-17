@@ -25,9 +25,7 @@ nnoremap <a-Tab> gt
 
 "set nohlsearch
 set nocompatible              " be iMproved, required
-filetype on                  " required
-filetype plugin on                  " required
-syntax on
+
 
 " Leader
 let mapleader      = ' '
@@ -226,6 +224,9 @@ Plug 'vimwiki/vimwiki'
 
 call plug#end()
 
+syntax enable
+filetype plugin indent on
+
 " jsx/tsx
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
 
@@ -262,6 +263,8 @@ let g:prettier#config#tab_width = '2'
 let g:prettier#config#parser = ""
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
 
+" Rust
+let g:rustfmt_autosave = 1
 
 function! EndProseMode()
 "    if executable('tmux') && strlen($TMUX)
