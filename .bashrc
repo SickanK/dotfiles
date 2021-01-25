@@ -13,7 +13,7 @@ eval "$(starship init bash)"
 ### ALIASES ###
 
 # Writeable vim command
- alias vim='sudoedit -E nvim'
+ alias vim='sudo -E nvim'
 
 # bash config
  alias bashrc='vim ~/.bashrc'
