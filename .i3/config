@@ -420,6 +420,7 @@ exec_always --no-startup-id sh $HOME/.config/polybar/launch_polybar.sh
 ################### EXECUTE ##################### {{{
 
 exec_always --no-startup-id $HOME/.bin/ext_monitor
+exec_always --no-startup-id sh $HOME/.screenlayout/default.sh
 
 
 # exec_always compton --config $HOME/.config/compton/compton.conf --respect-prop-shadow
