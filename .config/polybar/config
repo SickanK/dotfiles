@@ -1,14 +1,14 @@
 [colors]
-background = #282828
-foreground = #ebdbb2
-red        = #fb4934
-green      = #b8bb26
-yellow     = #fabd2f
-blue       = #83a598
-purple     = #d3869b
-teal       = #8ec07c
-orange     = #fe8019
-gray       = #a89984
+background = #000000
+foreground = #ffffff
+red        = #fe0100
+green      = #33ff00
+yellow     = #feff00
+blue       = #0066ff
+purple     = #cc00ff
+teal       = #00ffff
+orange     = #fe0100
+gray       = #ffffff
 
 [bar/top]
 ; Size
@@ -49,9 +49,8 @@ module-margin-left  = 0
 module-margin-right = 0
 
 ; Font
-font-0 = Iosevka:size=9;2
-font-1 = Font Awesome 5 Free Solid:size=10;2
-font-2 = "Regular Siji:size=10;2"
+font-0 = Font Awesome 5 Free Solid:size=10;2
+font-1 = "Regular Siji:size=10;2"
 
 ; Modlues
 modules-left   = i3
@@ -87,7 +86,7 @@ ws-icon-default = 
 
 ; Focused label
 label-focused            = %icon% %name%
-label-focused-background = ${colors.orange}
+label-focused-background = ${colors.blue}
 label-focused-foreground = ${colors.foreground}
 label-focused-padding    = 2
 

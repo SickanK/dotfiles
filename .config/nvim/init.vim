@@ -190,7 +190,6 @@ set listchars=tab:>-,trail:~,extends:>,precedes:<,space:.
 set ttyfast
 
 " Scheme
-:colorscheme base16-gruvbox-dark-pale 
 set t_Co=256
 
 
@@ -198,6 +197,7 @@ set t_Co=256
 Plug 'godlygeek/csapprox'
 Plug 'chriskempson/base16-vim'
 Plug 'nanotech/jellybeans.vim'
+Plug 'lucasprag/simpleblack'
 
 " Style, Lint, Checking etc
 Plug 'preservim/nerdcommenter' " Comment multiple lines
@@ -218,9 +218,6 @@ Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'junegunn/fzf'
-
-" Other
-Plug 'vimwiki/vimwiki'
 
 call plug#end()
 
