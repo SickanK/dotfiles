@@ -1,14 +1,14 @@
 [colors]
-background = #000000
-foreground = #ffffff
-red        = #fe0100
-green      = #33ff00
-yellow     = #feff00
-blue       = #0066ff
-purple     = #cc00ff
-teal       = #00ffff
-orange     = #fe0100
-gray       = #ffffff
+background = #1a1b18
+foreground = #f1ebeb
+red        = #dc2566
+green      = #8fc029
+yellow     = #d4c96e
+blue       = #55bcce
+purple     = #9358fe
+teal       = #56b7a5
+orange     = #fa2772
+gray       = #76715e
 
 [bar/top]
 ; Size
@@ -97,7 +97,7 @@ label-unfocused-padding    = 2
 
 ; Visible labels
 label-visible            = %icon% %name%
-label-visible-foreground = ${colors.orange}
+label-visible-foreground = ${colors.blue}
 label-visible-padding    = 2
 
 ; Urgent labels

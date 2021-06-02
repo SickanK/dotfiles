@@ -51,8 +51,8 @@ set $color15  #ffffff
 set $color16 #117700
 
 # set $borderInactive #928374
-set $borderInactive #003388
-set $borderActive   #0066ff
+set $borderInactive #4b93a0
+set $borderActive   #55bcce
 
 # Window Colors
 #			Border		  Background          Text              Indicator
@@ -129,7 +129,7 @@ assign [class="Discord|discord"]                                      → 9
 ################### GAPS ######################## {{{
 
 # No titles, minimal borders
-for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 3
 new_window 1pixel
 
 
