@@ -189,9 +189,6 @@ set ttimeoutlen=1
 set listchars=tab:>-,trail:~,extends:>,precedes:<,space:.
 set ttyfast
 
-" Scheme
-set t_Co=256
-:colorscheme monokai
 
 
 " Themes
@@ -199,6 +196,7 @@ Plug 'godlygeek/csapprox'
 Plug 'chriskempson/base16-vim'
 Plug 'nanotech/jellybeans.vim'
 Plug 'lucasprag/simpleblack'
+Plug 'crusoexia/vim-monokai'
 
 " Style, Lint, Checking etc
 Plug 'preservim/nerdcommenter' " Comment multiple lines
@@ -223,6 +221,11 @@ call plug#end()
 
 syntax enable
 filetype plugin indent on
+
+" Scheme
+syntax on
+set t_Co=256
+:colorscheme monokai
 
 " jsx/tsx
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact

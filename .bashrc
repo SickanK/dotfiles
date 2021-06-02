@@ -7,7 +7,7 @@
 PS1='[\u@\h \W]\$ '
 
 ### Terminal startup ###
-neofetch
+#neofetch
 eval "$(starship init bash)"
 
 ### ALIASES ###
