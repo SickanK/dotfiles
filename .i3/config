@@ -51,8 +51,8 @@ set $color15  #ffffff
 set $color16 #117700
 
 # set $borderInactive #928374
-set $borderInactive #4b93a0
-set $borderActive   #55bcce
+set $borderInactive #3e8e80
+set $borderActive   #66efd5
 
 # Window Colors
 #			Border		  Background          Text              Indicator
