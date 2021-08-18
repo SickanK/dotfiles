@@ -3,8 +3,7 @@
     silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     autocmd VimEnter * PlugInstall
   endif
-
-  "Note: Skip initialization for vim-tiny or vim-small.
+"Note: Skip initialization for vim-tiny or vim-small.
   if !1 | finish | endif
   if has('vim_starting')
     set nocompatible               " Be iMproved
@@ -261,10 +260,16 @@ autocmd FileType html,css,tsx,jsx EmmetInstall
 let g:prettier#config#use_tabs = 'false'
 let g:prettier#config#tab_width = '2'
 let g:prettier#config#parser = ""
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue,*.yaml,*.html PrettierAsync
+
+" Debug
+packadd termdebug
+let termdebugger="rust-gdb"
+let g:termdebug_wide=1
 
 " Rust
 let g:rustfmt_autosave = 1
+
 
 function! EndProseMode()
 "    if executable('tmux') && strlen($TMUX)
@@ -509,5 +514,7 @@ nnoremap <silent> <space>J  :<C-u>CocNext<CR>
 nnoremap <silent> <space>K  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent> <space>P  :<C-u>CocListResume<CR>
+" CocFix
+nnoremap <M-f> :CocFix<CR>
 
 
