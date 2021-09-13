@@ -118,11 +118,10 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 # assign [class=""]                                                   → 5
 # assign [class="Thunar|thunar"]                                        → 6
 # assign [class=""]                                                   → 7
-#assign [class="Vmware|vmware"]                                        → 8
+assign [class="Spotify|spotify"]                                        → 8
 assign [class="Discord|discord"]                                      → 9
-#assign [class="Spotify|spotify"]                                      → 10
-#fix for spotify not moving to workspace 10
-#for_window [class="Spotify"] move to workspace 10
+#fix for spotify not moving to workspace 8
+for_window [class="Spotify"] move to workspace 8 
 
 #}}}
 
