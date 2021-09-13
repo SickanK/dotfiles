@@ -207,8 +207,7 @@ Plug 'HerringtonDarkholme/yats.vim'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
-  \ 'branch': 'release/0.x'
-  \ }
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
 
 " Nerdtree
 Plug 'preservim/nerdtree'
@@ -216,7 +215,27 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'junegunn/fzf'
 
+" text
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
+Plug 'reedes/vim-pencil'
+
 call plug#end()
+
+" text
+" Treat all .md files as markdown
+autocmd BufNewFile,BufRead *.md set filetype=markdown
+
+ " Pencil / Writing Controls {{{
+   let g:pencil#wrapModeDefault = 'soft'
+   let g:pencil#textwidth = 74
+   let g:pencil#joinspaces = 0
+   let g:pencil#cursorwrap = 1
+   let g:pencil#conceallevel = 3
+   let g:pencil#concealcursor = 'c'
+   let g:pencil#softDetectSample = 20
+   let g:pencil#softDetectThreshold = 130
+ " }}}
 
 syntax enable
 filetype plugin indent on
@@ -257,10 +276,9 @@ let g:user_emmet_install_global = 0
 autocmd FileType html,css,tsx,jsx EmmetInstall
 
 "Prettier 
-let g:prettier#config#use_tabs = 'false'
-let g:prettier#config#tab_width = '2'
-let g:prettier#config#parser = ""
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue,*.yaml,*.html PrettierAsync
+" let g:prettier#config#use_tabs = 'false'
+" let g:prettier#config#tab_width = '2'
+" autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue,*.yaml,*.html PrettierAsync 
 
 " Debug
 packadd termdebug
