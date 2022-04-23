@@ -2,32 +2,36 @@
     link:
       relink: true
 
-- clean: ['~']
+- clean: ["~"]
 
 - link:
-    ~/scripts/: 
+    ~/scripts/:
       create: true
       glob: true
       path: scripts/*
     ~/.tmux.conf: .tmux.conf
     ~/.bashrc: .bashrc
-    ~/.i3/config: 
+    ~/.i3/config:
       create: true
       path: .i3/config
-    ~/.config/polybar/: 
+    ~/.config/polybar/:
       create: true
       glob: true
       path: .config/polybar/*
-    ~/.config/alacritty/alacritty.yml: 
+    ~/.config/alacritty/alacritty.yml:
       create: true
       path: .config/alacritty/alacritty.yml
-    ~/.config/rofi/config.rasi: 
+    ~/.config/rofi/config.rasi:
       create: true
       path: .config/rofi/config.rasi
-    ~/.config/nvim/: 
+    ~/.config/nvim/:
       create: true
       glob: true
       path: .config/nvim/*
+    ~/.config/tmuxinator/:
+      create: true
+      glob: true
+      path: .config/tmuxinator/*
 
 - shell:
-  - [git submodule update --init --recursive, Installing submodules]
+    - [git submodule update --init --recursive, Installing submodules]
