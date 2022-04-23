@@ -44,3 +44,11 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 source "$HOME/.cargo/env"
 . "$HOME/.cargo/env"
+source /usr/share/nvm/init-nvm.sh
+
+# env
+
+REDDIS_ADDR="redis://127.0.0.1:45374"
+AMQP_ADDR="amqp://127.0.0.1:35672/%2f"
+ACCOUNT_GRPC_ADDR="http://localhost:39123"
+HOST_ADDR="0.0.0.0:50000"

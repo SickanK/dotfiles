@@ -1,7 +1,6 @@
 ###########################################################################
 ############		        i3 CONFIG FILE	                ###############
-##########################################################################
-# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+########################################################################## Please see http://i3wm.org/docs/userguide.html for a complete reference!
 ################       Start of all the settings          #################
 
 # KEY DEFINITIONS TO REMEMBER
@@ -295,6 +294,7 @@ bindsym $mod+Shift+i exec $HOME/.bin/i3/i3-layout-manager/layout_manager.sh
 # bindsym $mod+Return exec alacritty
 bindsym $mod+Return exec alacritty
 bindsym $mod+f exec firefox
+bindsym $mod+g exec discord --ignore-gpu-blocklist --disable-features=UseOzonePlatform --enable-features=VaapiVideoDecoder --use-gl=desktop --enable-gpu-rasterization --enable-zero-copy
 
 #}}}
 
@@ -403,7 +403,7 @@ bindsym $mod+Tab workspace next
 
 ################### WALLPAPER ################### {{{
 
-exec_always --no-startup-id feh --randomize --bg-center $HOME/backgrounds/*
+exec_always --no-startup-id feh --randomize --bg-scale --no-xinerama $HOME/backgrounds/*
 
 #}}}
 

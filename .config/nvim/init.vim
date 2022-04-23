@@ -1,4 +1,4 @@
-" SickanK Vim config
+" SickanK Vig
 "
 "
 "Note: install vim-plug if not present
@@ -26,6 +26,9 @@ nnoremap <a-m> :noh<CR>
 " colorscheme - colors
 syntax on
 set t_Co=256
+
+" provider
+let g:python3_host_prog = '/usr/bin/python3'
 
 " leader key
 let mapleader      = ' '
@@ -69,7 +72,7 @@ set expandtab
 
 
 " 1 tab == 4 spaces
-set shiftwidth=4
+set shiftwidth=2
 set tabstop=2
 
 
@@ -77,10 +80,6 @@ set tabstop=2
 let &t_SI = "\e[3 q"
 let &t_EI = "\e[1 q"
 
-
-" timeout
-set ttimeout
-set ttimeoutlen=1
 
 
 " different characters
@@ -168,11 +167,11 @@ Plug 'junegunn/fzf' " search files
 
 " Linting & Formatting
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' } " general formatter 
-Plug 'dense-analysis/ale' " linting and highlighting
 Plug 'rust-lang/rust.vim' " rust.
 Plug 'mattn/emmet-vim' " html snippets
-Plug 'maxmellon/vim-jsx-pretty' " jsx & tsx syntax highlighting and indenting
+Plug 'mlaursen/vim-react-snippets' " react snippets for tsx & jsx
 Plug 'HerringtonDarkholme/yats.vim' " ts syntax highlighting
+Plug 'KarimElghamry/vim-auto-comment' " toggle comment
 
 " Nerdtree
 Plug 'preservim/nerdtree' " file explorer
@@ -180,6 +179,8 @@ Plug 'Xuyuanp/nerdtree-git-plugin' " git status flags
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight' " syntax for nerdtree
 
 " Text
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+Plug 'xuhdev/vim-latex-live-preview'
 Plug 'junegunn/goyo.vim' " distraction-free writing
 Plug 'reedes/vim-pencil' " tweaks needed to smooth the path to writing prose
 Plug 'junegunn/limelight.vim' " hyperfocus-writing
@@ -187,6 +188,9 @@ Plug 'junegunn/limelight.vim' " hyperfocus-writing
 " Themes
 Plug 'crusoexia/vim-monokai'
 
+" Git
+Plug 'nvim-lua/plenary.nvim'
+Plug 'sindrets/diffview.nvim'
 
 call plug#end()
 
@@ -200,6 +204,13 @@ call plug#end()
 "
 
 colorscheme monokai
+
+" ## MARKDOWNPREVIEW
+"
+
+let g:mkdp_auto_start = 1
+let g:mkdp_browser = 'firefox'
+
 
 " ## COC
 "
@@ -223,6 +234,9 @@ else
 endif
 
 " Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+:verbose imap <tab>
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
@@ -234,8 +248,44 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
+" position. Coc only does snippet and additional edit on confirm.
+" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
+if exists('*complete_info')
+  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+else
+  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+endif
+
+" ## VIM-AUTO-COMMENT
+"
+"
+" Inline comment mapping
+vnoremap <silent><M-'> :AutoInlineComment<CR>
+nnoremap <silent><M-'> :AutoInlineComment<CR>
+
+let g:default_inline_comment = '//'
+
+let g:block_comment_dict = {
+		\'/*': ["js", "ts", "jsx", "tsx", "cpp", "c", "dart", "rs"],
+		\'"""': ['py'],
+		\}
+
+let g:inline_comment_dict = {
+		\'//': ["js", "ts", "jsx", "tsx", "cpp", "c", "dart", "rs"],
+		\'#': ['py', 'sh'],
+		\'"': ['vim'],
+		\}
 
 " ## FZF
+"
 "
 
 " mappings
@@ -264,35 +314,8 @@ autocmd BufEnter,InsertLeave,BufRead,BufNewFile * :filetype detect
 
 let g:prettier#config#use_tabs = 'false'
 let g:prettier#config#tab_width = '2'
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue,*.yaml,*.html PrettierAsync 
-
-" ## ALE
-"
-"
-
-" mappings
-nmap <F10> :ALEFix<CR>
-
-let g:ale_linters = {
-      \   'python': ['flake11', 'pylint'],
-      \   'ruby': ['standardrb', 'rubocop'],
-      \   'javascript': ['eslint'],
-      \   'typescript': ['eslint'],
-      \}
-
-let g:ale_fixers = {
-\   'javascript': ['prettier'],
-\   'typescript': ['prettier'],
-\   'css': ['prettier'],
-\    'python': ['yapf'],
-\}
-
-let g:ale_fix_on_save = 1
-
-let g:ale_sign_warning = '▲'
-let g:ale_sign_error = '✗'
-highlight link ALEWarningSign String
-highlight link ALEErrorSign Title
+let g:prettier#config#parser = ''
+autocmd BufWritePre typescriptreact,*.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue,*.yaml,*.html PrettierAsync 
 
 
 " ## RUST
@@ -308,10 +331,10 @@ let g:termdebug_wide=1
 " ## EMMET
 "
 
-let g:user_emmet_leader_key='a-TAB'
+let g:user_emmet_leader_key='<a-TAB>'
 let g:user_emmet_mode='a' 
 let g:user_emmet_install_global = 0
-autocmd FileType html,css,tsx,jsx EmmetInstall
+autocmd FileType html,css,typescriptreact,jsx,tsx EmmetInstall
 
 " ## NERDTREE
 "
@@ -335,7 +358,6 @@ let g:pencil#conceallevel = 3
 let g:pencil#concealcursor = 'c'
 let g:pencil#softDetectSample = 20
 let g:pencil#softDetectThreshold = 130
-
 
 
 " # Functions
