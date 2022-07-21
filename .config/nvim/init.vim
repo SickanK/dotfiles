@@ -45,8 +45,8 @@ set foldmethod=indent
 
 " python indents
 au BufNewFile,BufRead *.py
-    \ set tabstop=2 |
-    \ set softtabstop=2 |
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
     \ set shiftwidth=4 |
     \ set textwidth=79 |
     \ set expandtab |
@@ -72,8 +72,8 @@ set expandtab
 
 
 " 1 tab == 4 spaces
-set shiftwidth=2
-set tabstop=2
+set shiftwidth=4
+set tabstop=4
 
 
 " cursor
@@ -313,7 +313,7 @@ autocmd BufEnter,InsertLeave,BufRead,BufNewFile * :filetype detect
 "
 
 let g:prettier#config#use_tabs = 'false'
-let g:prettier#config#tab_width = '2'
+let g:prettier#config#tab_width = '4'
 let g:prettier#config#parser = ''
 autocmd BufWritePre typescriptreact,*.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue,*.yaml,*.html PrettierAsync 
 
