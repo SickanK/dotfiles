@@ -1,0 +1,16 @@
+# /Users/energiuppfoljning/.config/tmuxinator/energi-uppföljning.yml
+
+name: energi-uppföljning
+root: ~/energi-uppföljning/app
+
+windows:
+  - client:
+      layout: main-vertical
+      panes:
+        - cd client && npm run dev
+        - cd client
+  - gateway:
+      layout: main-vertical
+      panes:
+        - cd gateway && npm run dev
+        - cd gateway
