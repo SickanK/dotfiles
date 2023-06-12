@@ -10,5 +10,9 @@ Fonts to install:
 
 ### MacOS
 ---
+Make sure to install:
+- [tmux plugin manager](https://github.com/tmux-plugins/tpm)
+- [packer](https://github.com/wbthomason/packer.nvim)
+
 Fonts to install:
 - Jetbrains Mono Nerdfont
