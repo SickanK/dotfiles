@@ -63,7 +63,7 @@
     "Green Component" : 0.56078433990478516
   },
   "Log Directory" : "\/Users\/sixtenk\/Desktop",
-  "Automatically Log" : true,
+  "Automatically Log" : false,
   "Cursor Guide Color" : {
     "Red Component" : 0.70213186740875244,
     "Color Space" : "sRGB",
