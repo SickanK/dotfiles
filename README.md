@@ -19,3 +19,5 @@ Fonts to install:
 
 After installing dependencies run:
 `tmux source ~/.config/tmux/`
+and install by pressing:
+`<prefix>+I` where prefix is `Ctrl+Space`
