@@ -16,3 +16,6 @@ Make sure to install:
 
 Fonts to install:
 - Jetbrains Mono Nerdfont
+
+After installing dependencies run:
+`tmux source ~/.config/tmux/`

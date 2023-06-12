@@ -1,2 +1,4 @@
 */.config/nvim/plugged/
 */.config/nvim/colors/
+
+*/**/tmux/plugins
