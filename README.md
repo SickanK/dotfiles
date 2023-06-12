@@ -1,7 +1,14 @@
-## Dotfiles and more
+## Dotfiles
 
-This is my dotfiles, bash-scripts and more
+This is a repository containing my dotfiles for both macos and linux.
 
+### Linux
+---
 Fonts to install:
 - siji
 - otf-awesome-font
+
+### MacOS
+---
+Fonts to install:
+- Jetbrains Mono Nerdfont
