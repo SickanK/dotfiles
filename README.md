@@ -17,6 +17,11 @@ Make sure to install:
 Fonts to install:
 - Jetbrains Mono Nerdfont
 
+Instead of moving the folders create symlinks for neovim
+`ln -s ~/dotfiles/macos/nvim ~/.config/`
+and tmux
+`ln -s ~/dotfiles/macos/tmux ~/.config/`
+
 After installing dependencies run:
 `tmux source ~/.config/tmux/`
 and install by pressing:
