@@ -13,6 +13,7 @@ Fonts to install:
 Make sure to install:
 - [tmux plugin manager](https://github.com/tmux-plugins/tpm)
 - [packer](https://github.com/wbthomason/packer.nvim)
+- [ripgrep (brew)](https://github.com/BurntSushi/ripgrep)
 
 Fonts to install:
 - Jetbrains Mono Nerdfont
