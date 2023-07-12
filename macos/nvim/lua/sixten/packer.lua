@@ -20,6 +20,9 @@ return require('packer').startup(function(use)
 
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
 
+
+    use { 'prettier/vim-prettier', run = 'yarn install --frozen-lockfile --production' }
+
     use('nvim-treesitter/playground')
 
     use('nvim-lua/plenary.nvim')
