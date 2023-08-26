@@ -1,7 +1,6 @@
 local lsp = require("lsp-zero")
 
 lsp.preset("recommended")
-
 lsp.ensure_installed({
     'tsserver',
     'rust_analyzer',
@@ -9,18 +8,6 @@ lsp.ensure_installed({
 
 -- Fix Undefined global 'vim'
 lsp.nvim_workspace()
-
-
-local cmp = require('cmp')
-local cmp_select = { behavior = cmp.SelectBehavior.Select }
-local cmp_mappings = lsp.defaults.cmp_mappings({
-    ['<C-m>'] = cmp.mapping.confirm({ select = true }),
-    ["<C-Space>"] = cmp.mapping.complete(),
-})
-
-lsp.setup_nvim_cmp({
-    mapping = cmp_mappings
-})
 
 lsp.set_preferences({
     suggest_lsp_servers = true,
@@ -51,6 +38,44 @@ lsp.on_attach(function(_, bufnr)
 end)
 
 lsp.setup()
+
+-- custom cmp
+
+local cmp = require('cmp')
+local cmp_select = { behavior = cmp.SelectBehavior.Select }
+local cmp_mappings = lsp.defaults.cmp_mappings({
+    ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+    ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+    ['<C-m>'] = cmp.mapping.confirm({ select = true }),
+    ["<C-Space>"] = cmp.mapping.complete(),
+})
+
+
+cmp.setup({
+    sources = {
+        { name = 'path' },
+        { name = 'nvim_lsp' },
+        --[[
+            { name = 'buffer',         keyword_length = 3 },
+            { name = 'luasnip',        keyword_length = 2 },
+             ]] --
+
+    },
+    mapping = cmp_mappings
+})
+
+cmp.setup.filetype("css", {
+    sources = {
+        { name = "css-properties", keyword_length = 2, group_index = 0 },
+        { name = 'nvim_lsp',       group_index = 2 },
+        { name = 'path',           group_index = 2 },
+    },
+    sorting = {
+        comparators = {
+            cmp.config.compare.score,
+        }
+    }
+})
 
 vim.diagnostic.config({
     virtual_text = true

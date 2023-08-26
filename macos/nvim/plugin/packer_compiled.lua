@@ -79,6 +79,11 @@ _G.packer_plugins = {
     path = "/Users/energiuppfoljning/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
+  ["cmp-css-properties"] = {
+    loaded = true,
+    path = "/Users/energiuppfoljning/.local/share/nvim/site/pack/packer/start/cmp-css-properties",
+    url = "/Users/energiuppfoljning/cmp-css-properties"
+  },
   ["cmp-nvim-lsp"] = {
     loaded = true,
     path = "/Users/energiuppfoljning/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
