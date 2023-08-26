@@ -9,6 +9,7 @@ lsp.ensure_installed({
 -- Fix Undefined global 'vim'
 lsp.nvim_workspace()
 
+
 lsp.set_preferences({
     suggest_lsp_servers = true,
     sign_icons = {
@@ -34,8 +35,20 @@ lsp.on_attach(function(_, bufnr)
     vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
     vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 
-    lsp.buffer_autoformat()
+    lsp.default_keymaps({ buffer = bufnr })
 end)
+
+lsp.format_on_save({
+    format_opts = {
+        async = false,
+        timeout_ms = 10000,
+    },
+    servers = {
+        ['lua_ls'] = { 'lua' },
+        ['rust_analyzer'] = { 'rust' },
+        ['tsserver'] = {},
+    }
+})
 
 lsp.setup()
 

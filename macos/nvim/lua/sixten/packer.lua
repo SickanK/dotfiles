@@ -20,6 +20,8 @@ return require('packer').startup(function(use)
 
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
 
+    use { 'prettier/vim-prettier', run = 'yarn install --frozen-lockfile --production' }
+
     use('nvim-treesitter/playground')
 
     use('nvim-lua/plenary.nvim')
@@ -32,6 +34,9 @@ return require('packer').startup(function(use)
     use('christoomey/vim-tmux-navigator')
 
     use('~/cmp-css-properties')
+    use { 'kevinhwang91/nvim-bqf', ft = 'qf' }
+
+    use('github/copilot.vim')
 
     use {
         'VonHeikemen/lsp-zero.nvim',
@@ -39,7 +44,8 @@ return require('packer').startup(function(use)
         requires = {
             -- LSP Support
             { 'neovim/nvim-lspconfig' }, -- Required
-            {                            -- Optional
+            {
+                -- Optional
                 'williamboman/mason.nvim',
                 run = function()
                     pcall(vim.cmd, 'MasonUpdate')
