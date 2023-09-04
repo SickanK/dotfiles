@@ -33,10 +33,17 @@ return require('packer').startup(function(use)
 
     use('christoomey/vim-tmux-navigator')
 
-    use('~/cmp-css-properties')
+    -- use('~/cmp-css-properties')
     use { 'kevinhwang91/nvim-bqf', ft = 'qf' }
 
-    use('github/copilot.vim')
+    use { "zbirenbaum/copilot.lua" }
+    use {
+        "zbirenbaum/copilot-cmp",
+        after = { "copilot.lua" },
+        config = function()
+            require("copilot_cmp").setup()
+        end
+    }
 
     use {
         'VonHeikemen/lsp-zero.nvim',
@@ -54,7 +61,7 @@ return require('packer').startup(function(use)
             { 'williamboman/mason-lspconfig.nvim' }, -- Optional
 
             -- Autocompletion
-            { '~/cmp-css-properties' },
+            -- { '~/cmp-css-properties' },
             { 'hrsh7th/nvim-cmp' },     -- Required
             { 'hrsh7th/cmp-nvim-lsp' }, -- Required
             { 'L3MON4D3/LuaSnip' },     -- Required

@@ -1,3 +1,4 @@
+--[[
 local cmp_css_properties = require("cmp_css_properties")
 
 cmp_css_properties.get_sources = function()
@@ -14,3 +15,5 @@ cmp_css_properties.handle_import_path = function(import)
 
     return nil
 end
+]]
+   --

@@ -4,6 +4,7 @@ lsp.preset("recommended")
 lsp.ensure_installed({
     'tsserver',
     'rust_analyzer',
+    'pylsp',
 })
 
 -- Fix Undefined global 'vim'
@@ -47,12 +48,19 @@ lsp.format_on_save({
         ['lua_ls'] = { 'lua' },
         ['rust_analyzer'] = { 'rust' },
         ['tsserver'] = {},
+        ['pylsp'] = { 'python' },
     }
 })
 
 lsp.setup()
 
 -- custom cmp
+
+local has_words_before = function()
+    if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then return false end
+    local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+    return col ~= 0 and vim.api.nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]:match("^%s*$") == nil
+end
 
 local cmp = require('cmp')
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
@@ -61,13 +69,27 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
     ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
     ['<C-m>'] = cmp.mapping.confirm({ select = true }),
     ["<C-Space>"] = cmp.mapping.complete(),
+    ["<Tab>"] = vim.schedule_wrap(function(fallback)
+        if cmp.visible() and has_words_before() then
+            cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+        else
+            fallback()
+        end
+    end),
+})
+
+
+require("copilot").setup({
+    suggestion = { enabled = false },
+    panel = { enabled = false },
 })
 
 
 cmp.setup({
     sources = {
-        { name = 'path' },
-        { name = 'nvim_lsp' },
+        { name = "copilot",  group_index = 2 },
+        { name = 'path',     group_index = 2 },
+        { name = 'nvim_lsp', group_index = 2 },
         --[[
             { name = 'buffer',         keyword_length = 3 },
             { name = 'luasnip',        keyword_length = 2 },
@@ -79,6 +101,7 @@ cmp.setup({
 
 cmp.setup.filetype("css", {
     sources = {
+        { name = "copilot",        group_index = 2 },
         { name = "css-properties", keyword_length = 2, group_index = 0 },
         { name = 'nvim_lsp',       group_index = 2 },
         { name = 'path',           group_index = 2 },
@@ -87,7 +110,8 @@ cmp.setup.filetype("css", {
         comparators = {
             cmp.config.compare.score,
         }
-    }
+    },
+    mapping = cmp_mappings
 })
 
 vim.diagnostic.config({
