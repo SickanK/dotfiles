@@ -31,3 +31,9 @@ vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.config/nvim/lua/sixten/packer.lua<
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
+
+local opts = { noremap = true, silent = true }
+vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)

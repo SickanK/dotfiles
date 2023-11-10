@@ -4,7 +4,6 @@ lsp.preset("recommended")
 lsp.ensure_installed({
     'tsserver',
     'rust_analyzer',
-    'pylsp',
 })
 
 -- Fix Undefined global 'vim'
@@ -39,6 +38,101 @@ lsp.on_attach(function(_, bufnr)
     lsp.default_keymaps({ buffer = bufnr })
 end)
 
+local lsp_configurations = require('lspconfig.configs')
+
+if not lsp_configurations.pylsp then
+    lsp_configurations.pylsp = {
+        default_config = {
+            name = 'pylsp',
+            cmd = { 'pylsp' },
+            filetypes = { 'python' },
+            root_dir = require('lspconfig.util').root_pattern(".git", 'pyproject.toml', 'setup.py', 'setup.cfg',
+                'requirements.txt', 'Pipfile'),
+        }
+    }
+end
+
+require('lspconfig').pylsp.setup {
+    settings = {
+        pylsp = {
+            plugins = {
+                mypy = {
+                    enabled = true,
+                    live_mode = true
+                },
+                ruff = {
+                    enabled = false,
+                },
+                flake8 = { enabled = false },
+                pyflakes = { enabled = false },
+                pylint = { enabled = false },
+                pycodestyle = { enabled = false },
+                mccabe = { enabled = false },
+            },
+        },
+    },
+}
+
+if not lsp_configurations.ruff_lsp then
+    lsp_configurations.ruff_lsp = {
+        default_config = {
+            name = 'ruff-lsp',
+            cmd = { 'ruff-lsp' },
+            filetypes = { 'python' },
+            root_dir = require('lspconfig.util').root_pattern(".git", 'pyproject.toml', 'setup.py', 'setup.cfg',
+                'requirements.txt', 'Pipfile'),
+            single_file_support = true,
+        }
+    }
+end
+
+-- Use an on_attach function to only map the following keys
+-- after the language server attaches to the current buffer
+local on_attach = function(client, bufnr)
+    -- Enable completion triggered by <c-x><c-o>
+    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+    -- Mappings.
+    -- See `:help vim.lsp.*` for documentation on any of the below functions
+    local bufopts = { noremap = true, silent = true, buffer = bufnr }
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+    vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
+    vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
+    vim.keymap.set('n', '<space>wl', function()
+        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+    end, bufopts)
+    vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
+    vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
+    vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+    vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
+
+    vim.api.nvim_create_autocmd("BufWritePre", {
+        buffer = buffnr,
+
+        callback = function()
+            vim.lsp.buf.format()
+        end,
+    })
+end
+
+-- Configure `ruff-lsp`.
+-- See: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#ruff_lsp
+-- For the default config, along with instructions on how to customize the settings
+require('lspconfig').ruff_lsp.setup({
+    on_attach = on_attach,
+    init_options = {
+        settings = {
+            -- Any extra CLI arguments for `ruff` go here.
+            args = {},
+        }
+    }
+})
+
 lsp.format_on_save({
     format_opts = {
         async = false,
@@ -48,7 +142,8 @@ lsp.format_on_save({
         ['lua_ls'] = { 'lua' },
         ['rust_analyzer'] = { 'rust' },
         ['tsserver'] = {},
-        ['pylsp'] = { 'python' },
+        ['ruff-lsp'] = { 'python' },
+        ['taplo'] = { 'toml' },
     }
 })
 
