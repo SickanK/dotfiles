@@ -2,3 +2,5 @@
 */.config/nvim/colors/
 
 */**/tmux/plugins
+
+*/**/.DS_Store

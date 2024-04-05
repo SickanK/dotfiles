@@ -38,6 +38,12 @@ lsp.on_attach(function(_, bufnr)
     lsp.default_keymaps({ buffer = bufnr })
 end)
 
+vim.g.rustaceanvim = {
+    server = {
+        capabilities = lsp.get_capabilities()
+    },
+}
+
 local lsp_configurations = require('lspconfig.configs')
 
 if not lsp_configurations.pylsp then
