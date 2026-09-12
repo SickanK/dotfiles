@@ -1,0 +1,125 @@
+# Linked to ~/.aerospace.toml by install.sh.
+config-version = 2
+after-startup-command = []
+start-at-login = true
+
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = false
+accordion-padding = 30
+default-root-container-layout = 'tiles'
+default-root-container-orientation = 'auto'
+automatically-unhide-macos-hidden-apps = true
+on-mode-changed = []
+
+persistent-workspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "A", "B",
+                         "C", "D", "F", "G", "N", "S", "V", "X", "Z"]
+
+# Place newly detected windows to the right.
+[[on-window-detected]]
+    check-further-callbacks = true
+    run = 'move right'
+
+# Odd-numbered workspaces on the main monitor; even-numbered on the secondary.
+[workspace-to-monitor-force-assignment]
+    1 = 'main'
+    3 = 'main'
+    5 = 'main'
+    7 = 'main'
+    9 = 'main'
+    2 = 'secondary'
+    4 = 'secondary'
+    6 = 'secondary'
+    8 = 'secondary'
+    10 = 'secondary'
+
+[key-mapping]
+    preset = 'qwerty'
+
+[gaps]
+    inner.horizontal = 0
+    inner.vertical = 0
+    outer.left = 0
+    outer.bottom = 0
+    outer.top = 0
+    outer.right = 0
+
+[mode.main.binding]
+    alt-slash = 'layout tiles horizontal vertical'
+
+    alt-h = 'focus left'
+    alt-j = 'focus down'
+    alt-k = 'focus up'
+    alt-l = 'focus right'
+
+    alt-period = 'focus-monitor --wrap-around next'
+    alt-comma = 'focus-monitor --wrap-around prev'
+    alt-shift-period = ['move-node-to-monitor --wrap-around next', 'focus-monitor --wrap-around next']
+    alt-shift-comma = ['move-node-to-monitor --wrap-around prev', 'focus-monitor --wrap-around prev']
+
+    alt-shift-h = 'move left'
+    alt-shift-j = 'move down'
+    alt-shift-k = 'move up'
+    alt-shift-l = 'move right'
+    alt-minus = 'resize smart -50'
+    alt-equal = 'resize smart +50'
+
+    # QWERTY row selects workspaces 1–10, preserving Swedish Alt+7/8/9 for |[].
+    alt-q = 'workspace 1'
+    alt-w = 'workspace 2'
+    alt-e = 'workspace 3'
+    alt-r = 'workspace 4'
+    alt-t = 'workspace 5'
+    alt-y = 'workspace 6'
+    alt-u = 'workspace 7'
+    alt-i = 'workspace 8'
+    alt-o = 'workspace 9'
+    alt-p = 'workspace 10'
+
+    alt-a = 'workspace A'
+    alt-b = 'workspace B'
+    alt-c = 'workspace C'
+    alt-d = 'workspace D'
+    alt-f = 'workspace F'
+    alt-g = 'workspace G'
+    alt-n = 'workspace N'
+    alt-s = 'workspace S'
+    alt-v = 'workspace V'
+    alt-x = 'workspace X'
+    alt-z = 'workspace Z'
+
+    alt-shift-q = 'move-node-to-workspace 1'
+    alt-shift-w = 'move-node-to-workspace 2'
+    alt-shift-e = 'move-node-to-workspace 3'
+    alt-shift-r = 'move-node-to-workspace 4'
+    alt-shift-t = 'move-node-to-workspace 5'
+    alt-shift-y = 'move-node-to-workspace 6'
+    alt-shift-u = 'move-node-to-workspace 7'
+    alt-shift-i = 'move-node-to-workspace 8'
+    alt-shift-o = 'move-node-to-workspace 9'
+    alt-shift-p = 'move-node-to-workspace 10'
+
+    alt-shift-a = 'move-node-to-workspace A'
+    alt-shift-b = 'move-node-to-workspace B'
+    alt-shift-c = 'move-node-to-workspace C'
+    alt-shift-d = 'move-node-to-workspace D'
+    alt-shift-f = 'move-node-to-workspace F'
+    alt-shift-g = 'move-node-to-workspace G'
+    alt-shift-n = 'move-node-to-workspace N'
+    alt-shift-s = 'move-node-to-workspace S'
+    alt-shift-v = 'move-node-to-workspace V'
+    alt-shift-x = 'move-node-to-workspace X'
+    alt-shift-z = 'move-node-to-workspace Z'
+
+    alt-tab = 'workspace-back-and-forth'
+    alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
+    alt-esc = 'mode service'
+
+[mode.service.binding]
+    esc = ['reload-config', 'mode main']
+    r = ['flatten-workspace-tree', 'mode main']
+    f = ['layout floating tiling', 'mode main']
+    backspace = ['close-all-windows-but-current', 'mode main']
+    alt-shift-h = ['join-with left', 'mode main']
+    alt-shift-j = ['join-with down', 'mode main']
+    alt-shift-k = ['join-with up', 'mode main']
+    alt-shift-l = ['join-with right', 'mode main']

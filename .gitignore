@@ -4,3 +4,7 @@
 */**/tmux/plugins
 
 */**/.DS_Store
+
+# Locally installed tmux plugins and macOS metadata
+/tmux/plugins/
+.DS_Store

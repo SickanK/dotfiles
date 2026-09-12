@@ -1,0 +1,72 @@
+# Lazygit Configuration
+# Catppuccin Latte Theme
+
+gui:
+  # Catppuccin Latte colors
+  theme:
+    activeBorderColor:
+      - "#1e66f5" # blue
+      - bold
+    inactiveBorderColor:
+      - "#9ca0b0" # overlay0
+    optionsTextColor:
+      - "#1e66f5" # blue
+    selectedLineBgColor:
+      - "#ccd0da" # surface0
+    cherryPickedCommitBgColor:
+      - "#ccd0da" # surface0
+    cherryPickedCommitFgColor:
+      - "#1e66f5" # blue
+    unstagedChangesColor:
+      - "#d20f39" # red
+    defaultFgColor:
+      - "#4c4f69" # text
+    searchingActiveBorderColor:
+      - "#df8e1d" # yellow
+  # UI settings
+  showIcons: true
+  nerdFontsVersion: "3"
+  border: rounded
+  mouseEvents: true
+  skipDiscardChangeWarning: false
+  showRandomTip: false
+  switchTabsWithPanelJumpKeys: true
+  expandFocusedSidePanel: true
+  expandedSidePanelWeight: 3
+  sidePanels:
+    - [status]
+    - [files, submodules, commits]
+    - [worktrees, branches, remotes]
+# Git settings
+git:
+  # Auto-fetch
+  autoFetch: true
+  autoRefresh: true
+  # Use delta for better diff rendering; cycle pagers with |
+  diffRenderers:
+    - colorArg: always
+      command: delta --dark --paging=never
+    - colorArg: always
+      command: delta --dark --paging=never --side-by-side
+# Keybindings (vim-like defaults)
+keybinding:
+  universal:
+    quit: q
+    quit-alt1: <c-c>
+    return: <esc>
+    togglePanel: <tab>
+    prevItem: <up>
+    nextItem: <down>
+    prevItem-alt: k
+    nextItem-alt: j
+    scrollUpMain: <pgup>
+    scrollDownMain: <pgdown>
+    scrollUpMain-alt1: K
+    scrollDownMain-alt1: J
+    jumpToBlock: ["1", "2", "3"]
+# Confirm on quit if there are uncommitted changes
+confirmOnQuit: true
+# Update check
+update:
+  method: never
+# File editing uses Lazygit's default editor detection (Git editor / VISUAL / EDITOR).
